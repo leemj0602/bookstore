@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>searchServlet" method="post">
+	<form action="searchResult.jsp" method="post">
 		Search:
 		<input type="text" name="search">
 		<input type="submit" name="submitBtn">

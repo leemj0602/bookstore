@@ -68,10 +68,10 @@
 		<%=isbn%><br>
 		quantity:
 		<%=quantity%><br>
-		price:
-		<%=price%><br>
+		price: $<%=price%><br>
 		rating:
-		<%=rating%><br>
+		<%=rating%>/5
+		<br>
 	</p>
 </body>
 </html>
