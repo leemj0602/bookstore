@@ -86,7 +86,7 @@
 					<%=rating%>
 				</h3>
 				<p class="info">Popular book that is well-loved by many in National Library Store</p>
-				<button type="submit" id="b1">See the Book</button>
+				<button id="b1">See the Book</button>
 			</div>
 		</div>
 		<%
