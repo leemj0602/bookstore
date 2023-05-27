@@ -278,12 +278,17 @@ body {
 		border-left: 1px solid #adb5bd;
 		padding-left: 1em;
 	}
-	form {
+	form.search {
 		color: #555;
 		display: flex;
 		padding: 2px;
 		border: 1px solid currentColor;
 		border-radius: 5px;
+	}
+	form.category {
+		color: #555;
+		display: flex;
+		padding: 2px;
 	}
 	input[type="search"] {
 		border: none;

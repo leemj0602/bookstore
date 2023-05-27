@@ -32,13 +32,25 @@
 <body>
 	<nav class="nav-bar">
 		<div class="nav1">
-			<form action="result.jsp" method="post">
-				<input type="text" name="searchBook" placeholder="Search Book">
-				<button type="submit">Search</button>
+			<form action="result.jsp" method="post" class="search">
+				<input type="text" name="search" placeholder="Search Book">
+				<button type="submit">
+					<i class="bi bi-search"></i>
+				</button>
 			</form>
+			<form action="result.jsp" class="category">
+			<input type="submit" name="category" value="Fantasy">
+			<input type="submit" name="category" value="Romance">
+			<input type="submit" name="category" value="Science Fiction">
+			</form>
+			<!-- 			
+			<a href="category.jsp?cat=fantasy">Fantasy</a>
+			<a href="result.jsp?cat=romance">Romance</a>
+			<a href="result.jsp?cat=science fiction">Science Fiction</a>	
+ -->
 		</div>
 	</nav>
-
+	<h1 style="font-size: 2em; text-align: center;">Some books that might interest you!</h1>
 	<main>
 		<%
 		int id = 0;
@@ -70,25 +82,29 @@
 			rating = rs.getDouble("rating");
 			image = rs.getString("image");
 		%>
+
 		<div class="books">
-			<div>
-				<img src="../images/<%=image%>" alt="" class="book-img">
-			</div>
-			<div class="descp">
-				<h2 class="book-name">
-					<%=title%>
-				</h2>
-				<h3 class="author">
-					by
-					<%=author%>
-				</h3>
-				<h3 class="rating">
-					<%=rating%>
-				</h3>
-				<p class="info">Popular book that is well-loved by many in National Library Store</p>
-				<button id="b1">See the Book</button>
-			</div>
+			<form action="bookDetail.jsp" style="border: 0px;">
+				<div>
+					<img src="../images/<%=image%>" alt="" class="book-img">
+				</div>
+				<div class="descp">
+					<h2 class="book-name">
+						<%=title%>
+					</h2>
+					<h3 class="author">
+						by
+						<%=author%>
+					</h3>
+					<h3 class="rating">
+						<%=rating%>
+					</h3>
+					<p class="info">Popular book that is well-loved by many in National Library Store</p>
+					<button name="id" value="<%=id%>">See the Book</button>
+				</div>
+			</form>
 		</div>
+
 		<%
 		}
 		%>
