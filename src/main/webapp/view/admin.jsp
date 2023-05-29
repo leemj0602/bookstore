@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +13,8 @@
 	String sessUserEmail = (String) session.getAttribute("sessUserEmail");
 	String sessUserRole = (String) session.getAttribute("sessUserRole");
 
-	if (sessUserEmail == null) {
-		response.sendRedirect("login.jsp?errCode=invalidLogin");
+	if (sessUserEmail == null || !sessUserRole.equals("Admin")) {
+		response.sendRedirect("403.jsp");
 	}
 	%>
 	<header role="banner">

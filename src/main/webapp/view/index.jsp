@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,39 +17,50 @@
 
 <!-- Google icons  -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 <link rel="stylesheet" type="text/css" href="../css/index.css">
 </head>
+<%
+String sessUserEmail = (String) session.getAttribute("sessUserEmail");
+String sessUserRole = (String) session.getAttribute("sessUserRole");
 
+if (sessUserRole != null && sessUserRole.equals("Member")) {
+%>
+<%@ include file="loggedInHeader.html"%>
+<%
+} else {
+%>
 <%@ include file="header.html"%>
-
-<section class="welcome">
-	<h1>Shop for your favorite books.</h1>
-</section>
+<%
+}
+%>
 
 <body>
+	<section class="welcome">
+		<h1>Shop for your favorite books.</h1>
+	</section>
+
 	<nav class="nav-bar">
 		<div class="nav1">
-			<form action="result.jsp" method="post" class="search">
-				<input type="text" name="search" placeholder="Search Book">
-				<button type="submit">
-					<i class="bi bi-search"></i>
+			<form action="result.jsp" method="post" class="search" style="border: 1px solid black; border-radius: 5px; margin: 10px;">
+				<input type="text" name="search" placeholder="Search Book" required>
+				<button type="submit" style="background: none; border: none;">
+					<span class="material-symbols-outlined" style="vertical-align: middle;"> search </span>
 				</button>
 			</form>
+
 			<form action="result.jsp" class="category">
-			<input type="submit" name="category" value="Fantasy">
-			<input type="submit" name="category" value="Romance">
-			<input type="submit" name="category" value="Science Fiction">
+				<input type="submit" name="category" value="Fantasy">
+				<input type="submit" name="category" value="Romance">
+				<input type="submit" name="category" value="Science Fiction">
 			</form>
-			<!-- 			
-			<a href="category.jsp?cat=fantasy">Fantasy</a>
-			<a href="result.jsp?cat=romance">Romance</a>
-			<a href="result.jsp?cat=science fiction">Science Fiction</a>	
- -->
 		</div>
 	</nav>
-	<h1 style="font-size: 2em; text-align: center;">Some books that might interest you!</h1>
+
+	<h1 style="font-size: 2em; text-align: center; padding-top: 1em;">Some books that might interest you!</h1>
+
 	<main>
 		<%
 		int id = 0;
@@ -84,27 +94,26 @@
 		%>
 
 		<div class="books">
-			<form action="bookDetail.jsp" style="border: 0px;">
-				<div>
-					<img src="../images/<%=image%>" alt="" class="book-img">
-				</div>
-				<div class="descp">
-					<h2 class="book-name">
-						<%=title%>
-					</h2>
-					<h3 class="author">
-						by
-						<%=author%>
-					</h3>
-					<h3 class="rating">
-						<%=rating%>
-					</h3>
-					<p class="info">Popular book that is well-loved by many in National Library Store</p>
-					<button name="id" value="<%=id%>">See the Book</button>
-				</div>
-			</form>
+			<div>
+				<img src="../images/<%=image%>" alt="" class="book-img">
+			</div>
+			<div class="descp">
+				<h2 class="book-name">
+					<%=title%>
+				</h2>
+				<h3 class="author">
+					by
+					<%=author%>
+				</h3>
+				<h3 class="rating">
+					<%=rating%>
+				</h3>
+				<p class="info">Popular book that is well-loved by many in National Library Store</p>
+				<form action="bookDetail.jsp">
+					<button type="submit" name="id" value="<%=id%>">See the Book</button>
+				</form>
+			</div>
 		</div>
-
 		<%
 		}
 		%>

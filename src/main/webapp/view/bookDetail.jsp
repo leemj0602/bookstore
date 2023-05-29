@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -10,7 +9,20 @@
 <link rel="stylesheet" href="../css/header.css">
 </head>
 
+<%
+String sessUserEmail = (String) session.getAttribute("sessUserEmail");
+String sessUserRole = (String) session.getAttribute("sessUserRole");
+
+if (sessUserRole != null && sessUserRole.equals("Member")) {
+%>
+<%@ include file="loggedInHeader.html"%>
+<%
+} else {
+%>
 <%@ include file="header.html"%>
+<%
+}
+%>
 
 <br>
 <br>
@@ -67,7 +79,7 @@
 			rating = rs.getDouble("rating");
 			image = rs.getString("image");
 		}
-		
+
 		// Step 7: Close connection
 		conn.close();
 	} catch (Exception e) {
@@ -104,9 +116,8 @@
 					</dl>
 				</div>
 				<div class="pane__section clearfix">
-					<span class="item-price"><%=price%><span
-						class="item-price__units">SGD</span></span><a class="button buy-button"
-						href="#">Purchase</a>
+					<span class="item-price"><%=price%><span class="item-price__units">SGD</span></span>
+					<a class="button buy-button" href="#">Purchase</a>
 				</div>
 			</div>
 		</article>

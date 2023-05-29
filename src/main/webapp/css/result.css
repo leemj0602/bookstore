@@ -1,5 +1,6 @@
 @charset "ISO-8859-1";
 
+/* ------------------- MAIN BOOKS ---------------------------------- */
 main {
 	padding-top: 5em; font-family : 'Noto Sans JP', sans-serif;
 	display: flex;
@@ -8,6 +9,7 @@ main {
 	justify-content: space-evenly;
 	align-items: center;
 	font-family: 'Noto Sans JP', sans-serif;
+	height: 100%;
 }
 
 .books {
@@ -83,12 +85,4 @@ main {
 
 .descp button:hover {
 	color: #a790f2;
-}
-
-#b1 {
-	color: #fbadaf;
-}
-
-#b1:hover {
-	color: #ff6e9f;
 }

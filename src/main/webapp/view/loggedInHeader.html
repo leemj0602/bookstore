@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Header</title>
-<link rel="stylesheet" type="text/css" href="../css/header.css">
+<title>Logged In Header</title>
+<link rel="stylesheet" type="text/css" href="../css/loggedInHeader.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<nav class="main-nav">
@@ -13,9 +14,8 @@
 
 		<div class="icon-about">
 			<ul>
-				<li><a href="login.jsp">Login/Register</a></li>
-				<!-- <i class="material-icons"><span class="material-icons-outlined">account_circle</span></i> -->
-				<li><a href="#">About-Us</a></li>
+				<li class="logout" style="margin-bottom: 10px;"><a href="invalidateSession.jsp">Logout</a></li>
+				<li class="profile"><a href="#">Profile</a></li>
 			</ul>
 		</div>
 	</nav>

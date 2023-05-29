@@ -1,5 +1,12 @@
 @charset "ISO-8859-1";
 
+@import
+	url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,400italic)
+	;
+
+@import
+	url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css)
+	;
 /*-------------------------------------------NavBar------------------------------------------------------------------------------- */
 * {
 	box-sizing: border-box;
@@ -18,6 +25,7 @@ body {
 a {
 	color: #262626;
 	text-decoration: none;
+	justify-content: space-between;
 }
 
 ul {
@@ -67,4 +75,16 @@ ul {
 .main-nav ul.main-menu {
 	flex: 1;
 	margin-left: 20px;
+}
+
+.logout a:before {
+	content: "\f08b";
+	font-family: FontAwesome;
+	padding-right: 0.6em;
+}
+
+.profile a:before {
+	content: "\f007";
+	font-family: FontAwesome;
+	padding-right: 0.6em;
 }

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +29,7 @@
 		// Step 5: Execute SQL Command
 		String sqlStr = "SELECT * FROM users WHERE email = ? AND password = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sqlStr);
-		
+
 		pstmt.setString(1, email);
 		pstmt.setString(2, password);
 		ResultSet rs = pstmt.executeQuery();
@@ -43,20 +42,20 @@
 	} catch (Exception e) {
 		out.print("Error: " + e);
 	}
-	
+
 	if (found) {
 		session.setAttribute("sessUserEmail", email);
 		session.setAttribute("sessUserRole", role);
-		
+
 		if (role.equals("Member")) {
-			response.sendRedirect("member.jsp");
+			response.sendRedirect("index.jsp");
 		}
-		
-		else {
+
+		else if (role.equals("Admin")) {
 			response.sendRedirect("admin.jsp");
 		}
 	}
-	
+
 	else {
 		response.sendRedirect("login.jsp?errCode=invalidLogin");
 	}
