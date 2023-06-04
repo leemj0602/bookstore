@@ -117,7 +117,7 @@ if (sessUserRole != null && sessUserRole.equals("Member")) {
 				</div>
 				<div class="pane__section clearfix">
 					<span class="item-price"><%=price%><span class="item-price__units">SGD</span></span>
-					<a class="button buy-button" href="#">Purchase</a>
+					<a class="button buy-button" href="addToCart.jsp?id=<%=id%>">Purchase</a>
 				</div>
 			</div>
 		</article>
