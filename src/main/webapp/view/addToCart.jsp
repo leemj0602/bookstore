@@ -8,12 +8,49 @@
 <body>
 	<%@page import="books.*"%>
 	<%@ page import="java.util.*"%>
-
+	<%@ page import="java.sql.*"%>
 
 	<%
 	int id = Integer.parseInt(request.getParameter("id"));
+	String title = "";
+	String author = "";
+	String image = "";
+	double price = 0;
 
-	Book book = new Book(id);
+	try {
+		// Step 1: Load JDBC Driver 
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Step 2: Define Connection URL
+		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=Password&serverTimezone=UTC";
+
+		// Step 3: Establish connection to URL
+		Connection conn = DriverManager.getConnection(connURL);
+
+		// Step 4: Create Statement object 
+		Statement stmt = conn.createStatement();
+
+		// Step 5: Execute SQL Command 
+		String sqlStr = "SELECT * FROM books WHERE id = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sqlStr);
+		pstmt.setInt(1, id);
+		ResultSet rs = pstmt.executeQuery();
+
+		//Step 6: Process result
+		if (rs.next()) {
+			title = rs.getString("title");
+			author = rs.getString("author");
+			image = rs.getString("image");
+			price = rs.getDouble("price");
+		}
+
+		// Step 7: Close connection
+		conn.close();
+	} catch (Exception e) {
+		out.println("Error :" + e);
+	}
+
+	Book book = new Book(id, title, author, price, image);
 
 	@SuppressWarnings("unchecked")
 	//check for existing bookCart session

@@ -1,0 +1,123 @@
+@charset "ISO-8859-1";
+
+@import "compass/css3";
+
+/* Global settings */
+/* Global "table" column settings */
+.product-image {
+	float: left;
+	width: 20%;
+}
+
+.product-details {
+	float: left;
+	width: 40%;
+}
+
+.product-price {
+	float: left;
+	width: 15%;
+}
+
+.product-removal {
+	float: right;
+	width: 10%;
+}
+
+/* This is used as the traditional .clearfix class */
+.shopping-cart:before, .product:before, .totals-item:before,
+	.shopping-cart:after, .product:after, .totals-item:after {
+	content: '';
+	display: table;
+}
+
+.shopping-cart:after, .product:after, .totals-item:after {
+	clear: both;
+}
+
+.shopping-cart, .product, .totals-item {
+	zoom: 1;
+}
+/* Body/Header stuff */
+body {
+	font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light',
+		'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.shopping-cart {
+	margin-bottom: 20px;
+}
+
+/* Product entries */
+.product {
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+.product .product-image {
+	text-align: center;
+}
+
+.product .product-image img {
+	width: 100px;
+}
+
+.product .product-details .product-title {
+	font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+	font-size: 20px;
+}
+
+.product .product-details .product-description {
+	margin: 5px 20px 5px 0;
+	line-height: 1.4em;
+}
+
+.product .product-quantity input {
+	width: 40px;
+}
+
+.product .remove-product {
+	border: 0;
+	padding: 4px 8px;
+	background-color: #c66;
+	color: #fff;
+	font-family: 'HelveticaNeue-Medium', 'Helvetica Neue Medium';
+	font-size: 12px;
+	border-radius: 3px;
+}
+
+.product .remove-product:hover {
+	background-color: #a44;
+}
+/* Totals section */
+.totals .totals-item {
+	float: left;
+	clear: both;
+	width: 85%;
+	margin-top: 10px;
+}
+
+.totals .totals-item label {
+	float: left;
+	clear: both;
+	width: 73%;
+	text-align: right;
+	float: left;
+}
+
+.checkout {
+	float: right;
+	border: 0;
+	padding: 6px 25px;
+	margin-right: 50px;
+	background-color: #6b6;
+	color: #fff;
+	font-size: 25px;
+	border-radius: 3px;
+	background-color: #6b6;
+}
+
+.checkout:hover {
+	background-color: #494;
+}
