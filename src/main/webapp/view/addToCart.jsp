@@ -11,59 +11,67 @@
 	<%@ page import="java.sql.*"%>
 
 	<%
-	int id = Integer.parseInt(request.getParameter("id"));
-	String title = "";
-	String author = "";
-	String image = "";
-	double price = 0;
+	String sessUserEmail = (String) session.getAttribute("sessUserEmail");
+	String sessUserRole = (String) session.getAttribute("sessUserRole");
 
-	try {
-		// Step 1: Load JDBC Driver 
-		Class.forName("com.mysql.jdbc.Driver");
+	if (sessUserEmail == null) {
+		response.sendRedirect("login.jsp");
+	} else {
 
-		// Step 2: Define Connection URL
-		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=Password&serverTimezone=UTC";
+		int id = Integer.parseInt(request.getParameter("id"));
+		String title = "";
+		String author = "";
+		String image = "";
+		double price = 0;
 
-		// Step 3: Establish connection to URL
-		Connection conn = DriverManager.getConnection(connURL);
+		try {
+			// Step 1: Load JDBC Driver 
+			Class.forName("com.mysql.jdbc.Driver");
 
-		// Step 4: Create Statement object 
-		Statement stmt = conn.createStatement();
+			// Step 2: Define Connection URL
+			String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=Password&serverTimezone=UTC";
 
-		// Step 5: Execute SQL Command 
-		String sqlStr = "SELECT * FROM books WHERE id = ?";
-		PreparedStatement pstmt = conn.prepareStatement(sqlStr);
-		pstmt.setInt(1, id);
-		ResultSet rs = pstmt.executeQuery();
+			// Step 3: Establish connection to URL
+			Connection conn = DriverManager.getConnection(connURL);
 
-		//Step 6: Process result
-		if (rs.next()) {
-			title = rs.getString("title");
-			author = rs.getString("author");
-			image = rs.getString("image");
-			price = rs.getDouble("price");
+			// Step 4: Create Statement object 
+			Statement stmt = conn.createStatement();
+
+			// Step 5: Execute SQL Command 
+			String sqlStr = "SELECT * FROM books WHERE id = ?";
+			PreparedStatement pstmt = conn.prepareStatement(sqlStr);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+
+			//Step 6: Process result
+			if (rs.next()) {
+		title = rs.getString("title");
+		author = rs.getString("author");
+		image = rs.getString("image");
+		price = rs.getDouble("price");
+			}
+
+			// Step 7: Close connection
+			conn.close();
+		} catch (Exception e) {
+			out.println("Error :" + e);
 		}
 
-		// Step 7: Close connection
-		conn.close();
-	} catch (Exception e) {
-		out.println("Error :" + e);
+		Book book = new Book(id, title, author, price, image);
+
+		@SuppressWarnings("unchecked")
+		//check for existing bookCart session
+		ArrayList<Book> bookCart = (ArrayList<Book>) session.getAttribute("bookCart");
+
+		if (bookCart == null) {
+			bookCart = new ArrayList<Book>();
+		}
+		bookCart.add(book);
+
+		session.setAttribute("bookCart", bookCart);
+
+		response.sendRedirect(request.getHeader("referer"));
 	}
-
-	Book book = new Book(id, title, author, price, image);
-
-	@SuppressWarnings("unchecked")
-	//check for existing bookCart session
-	ArrayList<Book> bookCart = (ArrayList<Book>) session.getAttribute("bookCart");
-
-	if (bookCart == null) {
-		bookCart = new ArrayList<Book>();
-	}
-	bookCart.add(book);
-
-	session.setAttribute("bookCart", bookCart);
-
-	response.sendRedirect(request.getHeader("referer"));
 	%>
 </body>
 </html>

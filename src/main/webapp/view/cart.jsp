@@ -63,7 +63,7 @@
 				$<%=price%>
 			</div>
 			<div class="product-removal">
-				<a href="removeCartItem.jsp">
+				<a href="removeCartItem.jsp?index=<%=i%>">
 					<button class="remove-product">Remove</button>
 				</a>
 			</div>
@@ -74,9 +74,9 @@
 		%>
 		<div class="totals">
 			<div class="totals-item totals-item-total">
-				<label>Grand Total: $<%=total%></label>
+				<label>Grand Total: $<%=String.format("%.2f", total)%></label>
 			</div>
-			<a href="#">
+			<a href="checkout.jsp">
 				<button class="checkout">Checkout</button>
 			</a>
 		</div>

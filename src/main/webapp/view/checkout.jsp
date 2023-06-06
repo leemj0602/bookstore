@@ -10,19 +10,13 @@
 	<%@ page import="java.util.*"%>
 
 	<%
-	int index = Integer.parseInt(request.getParameter("index"));
-
 	Book book = new Book();
 
 	@SuppressWarnings("unchecked")
-	//check for existing bookCart session
 	ArrayList<Book> bookCart = (ArrayList<Book>) session.getAttribute("bookCart");
 
-	bookCart.remove(index);
-
-	session.setAttribute("bookCart", bookCart);
-
-	response.sendRedirect(request.getHeader("referer"));
+	session.removeAttribute("bookCart");
+	response.sendRedirect("index.jsp");
 	%>
 </body>
 </html>
