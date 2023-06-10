@@ -3,12 +3,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Invalidate Session</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<%
-session.invalidate();
-response.sendRedirect("index.jsp");
-%>
+
 </body>
 </html>
