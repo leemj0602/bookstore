@@ -12,15 +12,23 @@
 	if (message != null) {
 		if (message.equals("passwords_mismatch")) {
 	%>
-	<script>window.alert("Passwords Mismatch!")</script>
-	<% 
-		}
-		
-		else if (message.equals("missing_info")){
-	%>
-	<script>window.alert("Missing Information!")</script>
+	<script>
+		window.alert("Passwords Mismatch!")
+	</script>
 	<%
-		}
+	} else if (message.equals("duplicate")) {
+	%>
+	<script>
+		window.alert("Email already exists! Please use a different email!")
+	</script>
+	<%
+	} else if (message.equals("missing_info")) {
+	%>
+	<script>
+		window.alert("Missing Information!")
+	</script>
+	<%
+	}
 	}
 	%>
 	<div class="form_wrapper">
@@ -61,6 +69,7 @@
 								</div>
 							</div>
 						</div>
+							
 						<input class="button" type="submit" value="Register" />
 					</form>
 				</div>

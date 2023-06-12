@@ -15,50 +15,51 @@
 	String lastName = request.getParameter("lastName");
 	boolean registered = false;
 
-	if (email.equals("") || password.equals("") || confirmPassword.equals("") || firstName.equals("") || lastName.equals("")) {
+	if (email.equals("") || password.equals("") || confirmPassword.equals("") || firstName.equals("")
+			|| lastName.equals("")) {
 		response.sendRedirect("registerPage.jsp?code=missing_info");
 	}
 
 	else {
 		if (password.equals(confirmPassword)) {
 			try {
-				// Load JDBC Driver
-				Class.forName("com.mysql.jdbc.Driver");
+		// Load JDBC Driver
+		Class.forName("com.mysql.jdbc.Driver");
 
-				// Define Connection URL
-				String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=Password&serverTimezone=UTC";
+		// Define Connection URL
+		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=Password&serverTimezone=UTC";
 
-				// Establish connection to URL
-				Connection conn = DriverManager.getConnection(connURL);
+		// Establish connection to URL
+		Connection conn = DriverManager.getConnection(connURL);
 
-				// Create Statement object
-				Statement stmt = conn.createStatement();
-				
-				// Execute SQL Command
-				String updateStr = "INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
-				PreparedStatement pstmt = conn.prepareStatement(updateStr);
-				
-				pstmt.setString(1, firstName);
-				pstmt.setString(2, lastName);
-				pstmt.setString(3, email);
-				pstmt.setString(4, password);
-				
-				int count = pstmt.executeUpdate();
-				
-				if (count > 0) {
-					registered = true;
-				}
-				
-			} catch (Exception e) {
-				out.print("Error: " + e);
-			}
-			
-			if (registered) {
-				response.sendRedirect("login.jsp?code=register_successful");
-			}
+		// Create Statement object
+		Statement stmt = conn.createStatement();
+
+		// Execute SQL Command
+		String updateStr = "INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
+		PreparedStatement pstmt = conn.prepareStatement(updateStr);
+
+		pstmt.setString(1, firstName);
+		pstmt.setString(2, lastName);
+		pstmt.setString(3, email);
+		pstmt.setString(4, password);
+
+		int count = pstmt.executeUpdate();
+
+		if (count > 0) {
+			registered = true;
 		}
 
-		else {
+			} catch (Exception e) {
+		out.print("Error: " + e);
+			}
+
+			if (registered) {
+		response.sendRedirect("login.jsp?code=register_successful");
+			} else {
+		response.sendRedirect("registerPage.jsp?code=duplicate");
+			}
+		} else {
 			response.sendRedirect("registerPage.jsp?code=passwords_mismatch");
 		}
 	}

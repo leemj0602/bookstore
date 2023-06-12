@@ -11,6 +11,7 @@
 	String email = request.getParameter("email");
 	String password = request.getParameter("password");
 	String role = "";
+	int id = 0;
 	boolean found = false;
 
 	try {
@@ -38,6 +39,8 @@
 		if (rs.next()) {
 			found = true;
 			role = rs.getString("role");
+			id = rs.getInt("id");
+
 		}
 	} catch (Exception e) {
 		out.print("Error: " + e);
@@ -48,6 +51,7 @@
 		session.setAttribute("sessUserRole", role);
 
 		if (role.equals("Member")) {
+			session.setAttribute("memberId", id);
 			response.sendRedirect("index.jsp");
 		}
 
@@ -57,7 +61,7 @@
 	}
 
 	else {
-		response.sendRedirect("login.jsp?errCode=invalidLogin");
+		response.sendRedirect("login.jsp?code=invalidLogin");
 	}
 	%>
 </body>

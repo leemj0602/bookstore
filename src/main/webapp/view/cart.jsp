@@ -37,7 +37,7 @@
 		double price = 0, total = 0;
 		@SuppressWarnings("unchecked")
 		ArrayList<Book> bookCart = (ArrayList<Book>) session.getAttribute("bookCart");
-		if (bookCart == null) {
+		if (bookCart == null || bookCart.size() == 0) {
 
 		} else {
 			for (int i = 0; i < bookCart.size(); i++) {
@@ -70,7 +70,6 @@
 		</div>
 		<%
 		}
-		}
 		%>
 		<div class="totals">
 			<div class="totals-item totals-item-total">
@@ -80,6 +79,9 @@
 				<button class="checkout">Checkout</button>
 			</a>
 		</div>
+		<%
+		}
+		%>
 	</div>
 
 	<%@ include file="footer.html"%>
