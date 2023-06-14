@@ -51,7 +51,6 @@
 
 	if (!email.equals(sessUserEmail) && rowsAffected > 0) {
 		session.setAttribute("sessUserEmail", email);
-		System.out.println(email);
 	} else {
 	}
 	response.sendRedirect(request.getHeader("referer"));

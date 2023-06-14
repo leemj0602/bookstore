@@ -2,7 +2,6 @@
 
 @import "compass/css3";
 
-/* Global settings */
 /* Global "table" column settings */
 .product-image {
 	float: left;
@@ -24,7 +23,7 @@
 	width: 10%;
 }
 
-/* This is used as the traditional .clearfix class */
+/* .clearfix */
 .shopping-cart:before, .product:before, .totals-item:before,
 	.shopping-cart:after, .product:after, .totals-item:after {
 	content: '';
@@ -71,10 +70,6 @@ body {
 .product .product-details .product-description {
 	margin: 5px 20px 5px 0;
 	line-height: 1.4em;
-}
-
-.product .product-quantity input {
-	width: 40px;
 }
 
 .product .remove-product {
