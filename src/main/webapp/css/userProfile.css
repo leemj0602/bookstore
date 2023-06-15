@@ -1,15 +1,5 @@
 @charset "ISO-8859-1";
 
-.profile {
-	display: flex;
-	flex-direction: column;
-}
-
-.password {
-	display: flex;
-	flex-direction: column;
-}
-
 /* Product entries */
 .product {
 	margin-bottom: 20px;
@@ -70,7 +60,40 @@
 	zoom: 1;
 }
 
+/* content */
 .orders {
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+h1 {
+	text-align: center;
+	margin: 20px;
+}
+
+div.profile, div.password {
+	display: flex;
+	justify-content: center;
+	font-size: 1.5em;
+}
+
+input {
+	height: 30px;
+	font-size: 0.8em;
+}
+
+.profile>form>input {
+	float: right;
+	margin-left: 20px;
+}
+
+input[type="submit"] {
+	float: right;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+	background: white;
+	cursor: pointer;
 }

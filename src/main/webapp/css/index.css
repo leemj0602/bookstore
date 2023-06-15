@@ -163,3 +163,7 @@ main {
 	position: relative;
 	top: 40%;
 }
+
+input[type="submit"]:hover, button[type="submit"]:hover {
+	cursor: pointer;
+}

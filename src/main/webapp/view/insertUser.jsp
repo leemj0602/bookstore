@@ -27,7 +27,7 @@
 		Class.forName("com.mysql.jdbc.Driver");
 
 		// Define Connection URL
-		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=Password&serverTimezone=UTC";
+		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=root1234&serverTimezone=UTC";
 
 		// Establish connection to URL
 		Connection conn = DriverManager.getConnection(connURL);
@@ -57,9 +57,11 @@
 			if (registered) {
 		response.sendRedirect("login.jsp?code=register_successful");
 			} else {
-		response.sendRedirect("registerPage.jsp?code=duplicate");
+		response.sendRedirect("login.jsp?code=duplicate");
 			}
-		} else {
+		}
+
+		else {
 			response.sendRedirect("registerPage.jsp?code=passwords_mismatch");
 		}
 	}

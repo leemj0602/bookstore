@@ -19,7 +19,7 @@
 		Class.forName("com.mysql.jdbc.Driver");
 
 		// Step 2: Define Connection URL
-		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=Password&serverTimezone=UTC";
+		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=root1234&serverTimezone=UTC";
 
 		// Step 3: Establish connection to URL
 		Connection conn = DriverManager.getConnection(connURL);
@@ -56,7 +56,7 @@
 		}
 
 		else if (role.equals("Admin")) {
-			response.sendRedirect("admin.jsp");
+			response.sendRedirect("adminMenu.jsp");
 		}
 	}
 

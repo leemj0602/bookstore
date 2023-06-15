@@ -116,3 +116,7 @@ body {
 .checkout:hover {
 	background-color: #494;
 }
+
+button:hover {
+	cursor: pointer;
+}

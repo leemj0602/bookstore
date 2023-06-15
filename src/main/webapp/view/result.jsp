@@ -39,7 +39,7 @@ if (sessUserRole != null && sessUserRole.equals("Member")) {
 		Class.forName("com.mysql.jdbc.Driver");
 
 		//Define Connection URL
-		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=Password&serverTimezone=UTC";
+		String connURL = "jdbc:mysql://localhost/book_store_db?user=root&password=root1234&serverTimezone=UTC";
 
 		//Establish connection to URL
 		Connection conn = DriverManager.getConnection(connURL);

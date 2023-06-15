@@ -2,7 +2,8 @@
 
 /* ------------------- MAIN BOOKS ---------------------------------- */
 main {
-	padding-top: 5em; font-family : 'Noto Sans JP', sans-serif;
+	padding-top: 5em;
+	font-family: 'Noto Sans JP', sans-serif;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -85,4 +86,5 @@ main {
 
 .descp button:hover {
 	color: #a790f2;
+	cursor: pointer;
 }
