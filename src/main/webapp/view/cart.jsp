@@ -23,6 +23,9 @@
 	<%@ include file="header.html"%>
 	<%
 	}
+	if (sessUserEmail == null) {
+	response.sendRedirect("login.jsp");
+	} else {
 	%>
 
 	<h1 style="text-align: center; position: relative; top: 60px;">Cart</h1>
@@ -80,6 +83,7 @@
 			</a>
 		</div>
 		<%
+		}
 		}
 		%>
 	</div>

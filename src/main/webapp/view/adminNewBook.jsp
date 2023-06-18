@@ -5,10 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>New Book</title>
-<link rel="stylesheet" type="text/css" href="../css/adminNewBook.css">
+<link rel="stylesheet" type="text/css" href="../css/admin.css">
 </head>
 <body>
-	<%
+  	<%
 	String sessUserEmail = (String) session.getAttribute("sessUserEmail");
 	String sessUserRole = (String) session.getAttribute("sessUserRole");
 	String message = request.getParameter("status");
@@ -18,21 +18,13 @@
 	}
 	%>
 	<header role="banner">
-		<h1>Administrator Panel</h1>
+		<a href="adminMenu.jsp"><h1>Administrator Panel</h1></a>
 		<ul class="utilities">
-			<li class="users" style="margin-top: 25px;"><a href="#">My Account</a></li>
-			<li class="logout"><a href="invalidateSession.jsp">Log Out</a></li>
+			<li class="logout" style="margin-top: 25px;"><a href="invalidateSession.jsp">Log Out</a></li>
 		</ul>
 	</header>
 
-	<nav role='navigation'>
-		<ul class="main">
-			<li class="write"><a href="adminNewBook.jsp">New Book</a></li>
-		</ul>
-	</nav>
-
-	<main role="main">
-		<section class="panel important">
+		<section class="panel important" style="margin-top: 80px">
 			<h2>New Book</h2>
 			<form action="insertBook.jsp">
 				<div class="twothirds">
@@ -48,13 +40,13 @@
 
 					Description:
 					<br>
-					<textarea name="description" style="width: 310px; height: 150px" id="description" required></textarea>
+					<textarea name="description" style="width: 350px; height: 150px" id="description" required></textarea>
 					<br>
 					<br>
 
 					Genre:
 					<br>
-					<input type="text" name="author" id="author" required />
+					<input type="text" name="genre" id="author" required />
 					<br>
 
 					Date:
@@ -91,6 +83,5 @@
 				</div>
 			</form>
 		</section>
-	</main>
 </body>
 </html>

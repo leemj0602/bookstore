@@ -6,32 +6,29 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit Book</title>
-<link rel="stylesheet" type="text/css" href="../css/adminEditBook.css">
+<link rel="stylesheet" type="text/css" href="../css/admin.css">
 </head>
 <body>
 	<%
 	String sessUserEmail = (String) session.getAttribute("sessUserEmail");
 	String sessUserRole = (String) session.getAttribute("sessUserRole");
-	String message = request.getParameter("status");
 
-	if (sessUserEmail == null || !sessUserRole.equals("Admin")) {
+  	if (sessUserEmail == null || !sessUserRole.equals("Admin")) {
 		response.sendRedirect("403.html");
 	}
 
 	else {
 	%>
 	<header role="banner">
-		<h1>Administrator Panel</h1>
+		<a href="adminMenu.jsp"><h1>Administrator Panel</h1></a>
 		<ul class="utilities">
-			<li class="users" style="margin-top: 25px;"><a href="#">My
-					Account</a></li>
-			<li class="logout"><a href="invalidateSession.jsp">Log Out</a></li>
+			<li class="logout" style="margin-top: 25px;"><a href="invalidateSession.jsp">Log Out</a></li>
 		</ul>
 	</header>
 
 	<section>
 		<h2>New Book</h2>
-		<table border=1 style="margin-top: 70px;">
+		<table border=1 style="margin-top: 80px;">
 			<tr>
 				<td style="text-align: center;"><strong>ID</strong></td>
 				<td style="text-align: center;"><strong>Title</strong></td>
@@ -114,7 +111,7 @@
 			} catch (Exception e) {
 			out.print("Error: " + e);
 			}
-			}
+			 }
 			%>
 		</table>
 	</section>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Edit Book</title>
-<link rel="stylesheet" type="text/css" href="../css/editBookForm.css">
+<link rel="stylesheet" type="text/css" href="../css/admin.css">
 </head>
 <body>
 <%
@@ -78,20 +78,12 @@
 	<header role="banner">
 		<h1>Administrator Panel</h1>
 		<ul class="utilities">
-			<li class="users" style="margin-top: 25px;"><a href="#">My Account</a></li>
-			<li class="logout"><a href="invalidateSession.jsp">Log Out</a></li>
+			<li class="logout" style="margin-top: 25px;"><a href="invalidateSession.jsp">Log Out</a></li>
 		</ul>
 	</header>
 
-	<nav role='navigation'>
-		<ul class="main">
-			<li class="write"><a href="#">Edit Book</a></li>
-		</ul>
-	</nav>
-
-	<main role="main">
-		<section class="panel important">
-			<h2>New Book</h2>
+		<section class="panel important" style="margin-top: 80px"	>
+			<h2>Edit Book</h2>
 			<form action="updateBook.jsp">
 				<div class="twothirds">
 					Title:
@@ -149,6 +141,5 @@
 				</div>
 			</form>
 		</section>
-	</main>
 </body>
 </html>

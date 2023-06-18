@@ -11,7 +11,7 @@
 	<%
 	String sessUserEmail = (String) session.getAttribute("sessUserEmail");
 	String sessUserRole = (String) session.getAttribute("sessUserRole");
-	int memberId = (int) session.getAttribute("memberId");
+	int memberId = 0;
 
 	if (sessUserRole != null && sessUserRole.equals("Member")) {
 	%>
@@ -21,6 +21,11 @@
 	%>
 	<%@ include file="header.html"%>
 	<%
+	}
+	if (sessUserEmail == null) {
+	response.sendRedirect("login.jsp");
+	} else {
+	memberId = (int) session.getAttribute("memberId");
 	}
 	%>
 	<br>

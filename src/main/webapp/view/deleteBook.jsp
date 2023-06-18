@@ -12,14 +12,14 @@
 	String sessUserEmail = (String) session.getAttribute("sessUserEmail");
 	String sessUserRole = (String) session.getAttribute("sessUserRole");
 
-	if (sessUserEmail == null || !sessUserRole.equals("Admin")) {
+ 	if (sessUserEmail == null || !sessUserRole.equals("Admin")) {
 		response.sendRedirect("403.html");
 	}
 
 	else {
 		String idStr = request.getParameter("id");
 		int id = Integer.parseInt(idStr);
-		boolean found = false;
+		boolean deleted = false;
 
 		try {
 			// Load JDBC Driver
@@ -43,20 +43,20 @@
 			int count = pstmt.executeUpdate();
 
 			if (count > 0) {
-		found = true;
+		deleted = true;
 			}
 		} catch (Exception e) {
 			out.print("Error: " + e);
 		}
 
-		if (found) {
+		if (deleted) {
 			response.sendRedirect("adminMenu.jsp?status=successful");
 		}
 
 		else {
 			response.sendRedirect("adminMenu.jsp?status=error_occured");
 		}
-	}
+ 	}
 	%>
 </body>
 </html>
