@@ -14,7 +14,6 @@
 	String sessUserRole = (String) session.getAttribute("sessUserRole");
 	
 	String idStr = request.getParameter("id");
-	int id = Integer.parseInt(idStr);
 	String title = "";
 	String author = "";
 	String description = "";
@@ -33,6 +32,7 @@
 	}
   	
 	else {
+		int id = Integer.parseInt(idStr);
 		try {
 			// Load JDBC Driver
 			Class.forName("com.mysql.jdbc.Driver");
