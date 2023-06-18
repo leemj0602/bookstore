@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -13,21 +12,22 @@
 	String sessUserEmail = (String) session.getAttribute("sessUserEmail");
 	String sessUserRole = (String) session.getAttribute("sessUserRole");
 
-  	if (sessUserEmail == null || !sessUserRole.equals("Admin")) {
+	if (sessUserEmail == null || !sessUserRole.equals("Admin")) {
 		response.sendRedirect("403.html");
 	}
 
 	else {
 	%>
 	<header role="banner">
-		<a href="adminMenu.jsp"><h1>Administrator Panel</h1></a>
+		<a href="adminMenu.jsp">
+			<h1>Administrator Panel</h1>
+		</a>
 		<ul class="utilities">
 			<li class="logout" style="margin-top: 25px;"><a href="invalidateSession.jsp">Log Out</a></li>
 		</ul>
 	</header>
 
 	<section>
-		<h2>New Book</h2>
 		<table border=1 style="margin-top: 80px;">
 			<tr>
 				<td style="text-align: center;"><strong>ID</strong></td>
@@ -101,17 +101,18 @@
 				<td style="text-align: center;"><%=isbn%></td>
 				<td style="text-align: center;"><%=rating%></td>
 
-				<td style="text-align: center;">
-				<a href="editBookForm.jsp?id=<%=id%>"><button>Edit</button></a> 
-				<br>
-				<a href="deleteBook.jsp?id=<%=id%>"><button>Delete</button></a></td>
+				<td style="text-align: center;"><a href="editBookForm.jsp?id=<%=id%>">
+						<button>Edit</button>
+					</a> <br> <a href="deleteBook.jsp?id=<%=id%>">
+						<button>Delete</button>
+					</a></td>
 			</tr>
 			<%
 			}
 			} catch (Exception e) {
 			out.print("Error: " + e);
 			}
-			 }
+			}
 			%>
 		</table>
 	</section>
